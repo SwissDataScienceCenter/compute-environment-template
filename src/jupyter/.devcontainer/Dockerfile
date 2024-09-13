@@ -1,4 +1,10 @@
-FROM mcr.microsoft.com/devcontainers/miniconda:1-3
+FROM docker.io/jupyter/${templateOption:baseVariant}:${templateOption:imageVariant}
+
+USER root
+# Generally, Dev Container Features assume that the non-root user (in this case jovyan)
+# is in a group with the same name (in this case jovyan). So we must first make that so.
+RUN groupadd jovyan \
+    && usermod -g jovyan -a -G users jovyan
 
 # install jupyterlab
 ENV CONDA_ENVS_DIRS /work/envs
@@ -11,7 +17,7 @@ RUN conda install -y jupyterlab && \
 # copy "noop.txt" so the COPY instruction does not fail if no environment.yml exists.
 COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
 
-USER 1000
+USER jovyan
 RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && \
     /opt/conda/bin/conda env create -n project -f /tmp/conda-tmp/environment.yml; fi && \
     conda init && \

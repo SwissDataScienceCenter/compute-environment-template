@@ -1,0 +1,38 @@
+{
+    "id": "datascience",
+    "version": "1.0.1",
+    "name": "datascience",
+    "description": "A Datascience Template",
+    "options": {
+      "baseVariant": {
+        "type": "string",
+        "description": "Base image. Check the documentation for details.",
+        "default": "datascience-notebook",
+        "proposals": [
+          "base-notebook",
+          "minimal-notebook",
+          "r-notebook",
+          "scipy-notebook",
+          "tensorflow-notebook",
+          "datascience-notebook",
+          "pyspark-notebook",
+          "all-spark-notebook"
+        ]
+      },
+      "imageVariant": {
+        "type": "string",
+        "description": "Image version (tag).",
+        "default": "latest",
+        "proposals": ["latest"]
+      }
+    },
+    "platforms": [
+      "Python",
+      "R",
+      "Julia",
+      "numpy",
+      "pandas",
+      "tidyverse",
+      "much more"
+    ]
+}

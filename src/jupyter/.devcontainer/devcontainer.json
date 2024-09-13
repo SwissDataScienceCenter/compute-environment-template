@@ -1,0 +1,19 @@
+{
+	"name":  "RenkuLab Data Science Notebooks",
+	"build": {
+		"context": "..",
+		"dockerfile": "Dockerfile"
+	}
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": "true",
+			"username": "jovyan",
+			"userUid": "1000",
+			"userGid": "1000",
+			"upgradePackages": "true"
+		}
+	},
+	// Use base images default CMD.
+	"overrideCommand": false,
+}
